@@ -1,47 +1,40 @@
 document.addEventListener('DOMContentLoaded', function() {
   
-  // Kode untuk update tahun (TETAP SAMA)
+  // --- Update Tahun Footer ---
   const yearSpan = document.getElementById('year');
   const currentYear = new Date().getFullYear();
   yearSpan.textContent = currentYear;
 
-  // --- DIUBAH: Logika slider pendidikan diperbarui agar sama dengan slider proyek ---
+  // --- Slider Pendidikan ---
   const educationSlider = document.querySelector('.education-slider');
   const allEducationSlides = document.querySelectorAll('.education-slide');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   
-  // Dimulai dari slide Kuliah (elemen ke-3, yang berarti index-nya adalah 2)
-  let educationCurrentIndex = 2; 
+  let educationCurrentIndex = 2; // Mulai dari slide Kuliah (index 2)
   const totalEducationSlides = allEducationSlides.length;
 
-  // Fungsi untuk mengupdate slide pendidikan mana yang aktif
   function updateActiveEducationSlide() {
     allEducationSlides.forEach(slide => {
       slide.classList.remove('active-slide');
     });
     allEducationSlides[educationCurrentIndex].classList.add('active-slide');
-
     const newPosition = -educationCurrentIndex * 100;
     educationSlider.style.left = newPosition + '%';
   }
 
-  // Event listener untuk tombol berikutnya
   nextBtn.addEventListener('click', () => {
     educationCurrentIndex = (educationCurrentIndex + 1) % totalEducationSlides;
     updateActiveEducationSlide();
   });
 
-  // Event listener untuk tombol sebelumnya
   prevBtn.addEventListener('click', () => {
     educationCurrentIndex = (educationCurrentIndex - 1 + totalEducationSlides) % totalEducationSlides;
     updateActiveEducationSlide();
   });
+  updateActiveEducationSlide(); // Inisialisasi
 
-  // Inisialisasi slider pendidikan
-  updateActiveEducationSlide();
-  
-  // Kode untuk footer (TETAP SAMA)
+  // --- Tampilkan Footer di Section Contact ---
   const footer = document.querySelector('footer');
   const contactSection = document.getElementById('contact');
   const observerOptions = { root: null, threshold: 0.5 };
@@ -57,13 +50,14 @@ document.addEventListener('DOMContentLoaded', function() {
   }, observerOptions);
   footerObserver.observe(contactSection);
 
-  // Kode untuk slider proyek (TETAP SAMA)
+  // --- Slider Proyek ---
   const projectSlider = document.querySelector('.project-slider');
   const allProjectSlides = document.querySelectorAll('.project-slide');
   const projectPrevBtn = document.getElementById('projectPrevBtn');
   const projectNextBtn = document.getElementById('projectNextBtn');
+  
   let projectCurrentIndex = 0;
-  const totalProjectSlides = allProjectSlides.length;
+  const totalProjectSlides = allProjectSlides.length; // Otomatis hitung jumlah slide
 
   function updateActiveSlide() {
     allProjectSlides.forEach(slide => {
@@ -78,13 +72,14 @@ document.addEventListener('DOMContentLoaded', function() {
     projectCurrentIndex = (projectCurrentIndex + 1) % totalProjectSlides;
     updateActiveSlide();
   });
+
   projectPrevBtn.addEventListener('click', () => {
     projectCurrentIndex = (projectCurrentIndex - 1 + totalProjectSlides) % totalProjectSlides;
     updateActiveSlide();
   });
-  updateActiveSlide();
+  updateActiveSlide(); // Inisialisasi
 
-  // Kode untuk navigasi aktif (TETAP SAMA)
+  // --- Navigasi Aktif Saat Scroll ---
   const sections = document.querySelectorAll('.section');
   const navLinks = document.querySelectorAll('.nav-links li a');
   const navObserverOptions = { root: null, threshold: 0.6 };
@@ -102,11 +97,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }, navObserverOptions);
-  sections.forEach(section => {
-    navObserver.observe(section);
-  });
+  sections.forEach(section => navObserver.observe(section));
 
-  // Kode untuk animasi saat scroll (TETAP SAMA)
+  // --- Animasi Elemen Saat Scroll ---
   const animatedElements = document.querySelectorAll('.fade-in-element');
   const animationObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -117,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }, { threshold: 0.2 });
   animatedElements.forEach(el => animationObserver.observe(el));
 
-  // Kode untuk efek 3D foto (TETAP SAMA)
+  // --- Efek 3D Foto di Home ---
   const photoFrame = document.querySelector('.photo-frame');
   photoFrame.addEventListener('mousemove', (e) => {
     const { left, top, width, height } = photoFrame.getBoundingClientRect();
@@ -130,5 +123,83 @@ document.addEventListener('DOMContentLoaded', function() {
   photoFrame.addEventListener('mouseleave', () => {
     photoFrame.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
   });
+
+  // --- Efek Partikel Canvas ---
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let particlesArray = [];
+  const mouse = { x: null, y: null };
+
+  window.addEventListener('mousemove', (event) => {
+    mouse.x = event.x;
+    mouse.y = event.y;
+    for (let i = 0; i < 3; i++) {
+      particlesArray.push(new Particle());
+    }
+  });
+
+  class Particle {
+    constructor() {
+      this.x = mouse.x;
+      this.y = mouse.y;
+      this.size = Math.random() * 5 + 1;
+      this.speedX = Math.random() * 3 - 1.5;
+      this.speedY = Math.random() * 3 - 1.5;
+      this.color = `hsl(${Math.random() * 360}, 100%, 80%)`;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if (this.size > 0.2) this.size -= 0.1;
+    }
+    draw() {
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function handleParticles() {
+    for (let i = 0; i < particlesArray.length; i++) {
+      particlesArray[i].update();
+      particlesArray[i].draw();
+      if (particlesArray[i].size <= 0.3) {
+        particlesArray.splice(i, 1);
+        i--;
+      }
+    }
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    handleParticles();
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  // --- LOGIKA HAMBURGER MENU (BARU DITAMBAHKAN) ---
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".nav-links");
+
+  // Toggle menu saat hamburger diklik
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+  });
+
+  // Tutup menu saat link diklik
+  document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+  }));
 
 });

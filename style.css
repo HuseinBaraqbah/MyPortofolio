@@ -1,51 +1,53 @@
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Pastikan konten utama di atas canvas */
-nav, main, footer {
-  position: relative;
-  z-index: 2;
-}
-
-body {
-  font-family: 'Roboto', sans-serif; /* Font default untuk semua teks */
-  -webkit-font-smoothing: antialiased; /* Teks lebih halus di Chrome/Safari */
-  -moz-osx-font-smoothing: grayscale; 
-}
-
-#particle-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Posisikan di belakang konten tapi di depan gradasi */
-  pointer-events: none;
-}
-
-h1, h2, h3, .logo {
-  font-family: 'Poppins', sans-serif; /* Font khusus untuk semua judul */
-}
-
+/* Pengaturan Font dan Scrollbar */
 html, body {
   height: 100%;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
-  font-family: Arial, sans-serif;
   overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  color: white;
+}
+
+h1, h2, h3, .logo {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Kustomisasi Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #2c3e50;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff9800;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e68900;
+}
+
+/* --- Latar Belakang dan Efek --- */
 .background-gradient {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 0;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: animatedGradient 20s ease infinite;
@@ -57,6 +59,23 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Konten Utama */
+nav, main, footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Navbar --- */
 nav {
   position: fixed;
   top: 0;
@@ -91,42 +110,51 @@ nav {
   color: white;
   text-decoration: none;
   font-size: 16px;
-  padding: 5px 0; /* Beri sedikit ruang vertikal */
-  position: relative; /* Diperlukan untuk garis bawah */
+  padding: 5px 0;
+  position: relative;
   transition: color 0.3s ease;
 }
 
-/* Membuat garis bawah (::after pseudo-element) */
 .nav-links li a::after {
   content: '';
   position: absolute;
   width: 100%;
   height: 2px;
-  background-color: #ff9800; /* Warna aksen Anda */
+  background-color: #ff9800;
   bottom: 0;
   left: 0;
-  transform: scaleX(0); /* Awalnya garis tidak terlihat */
+  transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s ease-out;
 }
 
-/* Efek saat mouse diarahkan ke link */
 .nav-links li a:hover::after {
-  transform: scaleX(1); /* Garis muncul dari kiri ke kanan */
+  transform: scaleX(1);
   transform-origin: bottom left;
 }
 
-.nav-links li a:hover {
-  color: #ff9800;
-}
-
 .nav-links li a.active-link {
-  color: #ff9800; /* Ubah warna teks menjadi warna aksen */
+  color: #ff9800;
   font-weight: bold;
 }
 
+/* --- Styles Hamburger --- */
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  transition: all 0.3s ease-in-out;
+  background-color: white;
+}
+
+/* --- Pengaturan Section --- */
 .section {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -135,43 +163,35 @@ nav {
   padding: 20px;
   text-align: center;
   position: relative;
-  background: transparent; 
-  color: white;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .section > h2 {
-  font-weight: 600; /* Semi-bold */
+  font-weight: 600;
   letter-spacing: 0.5px;
+  font-size: 2.5em;
+  margin-bottom: 40px;
 }
 
-#home, #about, #school, #skills, #contact {
-  background: none;
-}
-
-#home .intro {
-  text-align: justify;
-  line-height: 1.7;
-}
-
+/* --- Section: Home --- */
 .home-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 150px; 
+  gap: 80px;
   width: 90%;
   max-width: 1100px;
 }
 
 .photo-frame {
-  width: 350px;  
-  height: 350px; 
+  width: 350px;
+  height: 350px;
   border: 7px solid white;
-  border-radius: 50%; 
+  border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 5px 20px rgba(0,0,0,0.3);
   flex-shrink: 0;
-  transition: transform 0.2s ease-out; /* Transisi agar gerakan tidak kaku */
+  transition: transform 0.2s ease-out;
   transform-style: preserve-3d;
 }
 
@@ -182,16 +202,16 @@ nav {
 }
 
 .home-text {
-  text-align: left; 
+  text-align: left;
 }
 
 .home-text h1 {
-  font-size: 3em; 
-  font-weight: 700; /* Bold */
+  font-weight: 700;
   letter-spacing: 1px;
-  background: linear-gradient(-15deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  font-size: 3em;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
-  animation: animatedGradient 10s
+  animation: animatedGradient 20s ease infinite;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -200,151 +220,61 @@ nav {
 .home-text .intro {
   text-align: justify;
   line-height: 1.7;
-}
-
-@media (max-width: 768px) {
-  .home-container {
-    flex-direction: column; 
-    gap: 30px;
-  }
-
-  .photo-frame {
-    width: 220px; /* Kecilkan sedikit foto di mobile */
-    height: 220px;
-  }
-
-  .home-text {
-    text-align: center; /* Kembalikan teks ke tengah di mobile */
-  }
-
-  .home-text h1 {
-    font-size: 2.5em;
-  }
-
-  .home-text .intro {
-    text-align: center;
-  }
-}
-
-.profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.photo-frame.square {
-  width: 200px;
-  height: 200px;
-  border: 5px solid white;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 25px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-}
-
-.photo-frame.square img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.education-slider-container {
-  position: relative;
-  width: 80%;
+  font-weight: 400;
   max-width: 600px;
-  height: 250px;
-  overflow: hidden;
-  border-radius: 15px;
 }
 
-.education-slide h3, .project-title {
-  font-weight: 600; /* Semi-bold */
-  color: #ff9800; /* Gunakan warna aksen Anda */
+/* Ikon Teknologi */
+.tech-stack {
+  margin-top: 30px;
+  text-align: left;
 }
-
-.education-slider {
-  display: flex;
-  position: absolute;
-  top: 0;
-  left: -100%; 
-  width: 300%; 
-  height: 100%;
-  transition: left 0.5s ease-in-out; /* Animasi pergeseran */
-}
-
-.education-slide {
-  width: 33.333%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.school-logo {
-  max-width: 200px;
-  max-height: 200px;
-  object-fit: contain; /* Pastikan gambar tidak terpotong */
-  margin-bottom: 30px;
-  border-radius: 8px; /* Sudut sedikit melengkung */
-  background: rgba(255, 255, 255, 0.9); /* Background putih agar logo jelas */
-  padding: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.school-description {
-  margin-top: 20px;
-  max-width: 40%; 
-  text-align: justify;
+.tech-stack h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 15px;
   font-size: 1.1em;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.8);
 }
-
-.education-slide h3 {
-  font-size: 1.5em;
+.stack-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.stack-icons i {
+  font-size: 2.5em;
+  color: white;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.stack-icons i:hover {
   color: #ff9800;
-  margin-bottom: 10px;
+  transform: translateY(-3px);
 }
 
-.education-slider-container {
-  position: relative;
-  width: 90%;
-  max-width: 2000px;
-  height: 800px;
-}
-
-.slider-window {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 15px;
-  position: relative;
-}
-
-.education-slide .school-name {
-  font-size: 2.2em;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-p, .intro, li {
-  line-height: 1.7; /* Jarak antar baris yang lebih lega */
-  font-weight: 400; /* Normal */
-}
-
-/* Beri sedikit penekanan pada nama sekolah dan proyek */
-.school-name {
-  font-weight: 700; /* Bold */
-}
-
-.education-slide .year {
+/* Tombol CV */
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  margin-top: 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   font-size: 1em;
-  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
+.btn-cv {
+  background-color: #ff9800;
+  color: white;
+}
+.btn-cv:hover {
+  background-color: #e68900;
+  transform: translateY(-3px);
+}
+.btn-cv i { margin-right: 8px; }
 
-/* Tombol Panah Slider */
+/* --- Slider & Window --- */
 .slider-arrow {
   position: absolute;
   top: 50%;
@@ -364,90 +294,92 @@ p, .intro, li {
   align-items: center;
   transition: background-color 0.3s;
 }
+.slider-arrow:hover { background-color: rgba(0, 0, 0, 0.8); }
+.slider-arrow.prev { left: -25px; }
+.slider-arrow.next { right: -25px; }
 
-.slider-arrow:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+.slider-window {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; 
+  border-radius: 15px;
+  position: relative;
 }
 
-.slider-arrow.prev {
-  left: 10px;
+/* --- Section: School --- */
+.education-slider-container {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  height: 450px;
 }
-
-.slider-arrow.next {
-  right: 10px;
-}
-
-.intro {
-  max-width: 600px;
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.scroll-prompt {
+.education-slider {
+  display: flex;
   position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  
-  color: rgba(255, 255, 255, 0.7); /* Sedikit redup agar tidak terlalu menonjol */
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  
-  transition: color 0.3s ease;
+  top: 0;
+  left: -200%;
+  width: 300%;
+  height: 100%;
+  transition: left 0.5s ease-in-out;
+}
+.education-slide {
+  width: 33.333%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.school-logo {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 5px;
+}
+.school-name { font-size: 2.2em; font-weight: 700; }
+.school-description {
+  margin-top: 10px;
+  max-width: 80%;
+  text-align: justify;
+  font-size: 1.1em;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.scroll-prompt:hover {
-  color: white; /* Warna menjadi lebih terang saat disentuh mouse */
-}
-
-/* Bounce animation */
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-  40% { transform: translate(-50%, -10px); }
-  60% { transform: translate(-50%, -5px); }
-}
-
+/* --- Section: Skills (Projects) --- */
 .project-slider-container {
   position: relative;
   width: 90%;
   max-width: 800px;
   height: 550px; 
 }
-
-/* Menggunakan kembali style .slider-window untuk clipping */
 .project-slider-container .slider-window {
-  width: 100%;
-  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 .project-slider {
   display: flex;
   position: absolute;
   top: 0;
-  left: 0; /* Mulai dari slide pertama */
-  width: 400%; /* Karena ada 3 slide */
+  left: 0;
+  width: 400%; /* 4 SLIDE */
   height: 100%;
   transition: left 0.5s ease-in-out;
 }
-
 .project-slide {
-  width: 25%;
+  width: 25%; /* 4 SLIDE */
   height: 100%;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  opacity: 0.5; /* Secara default, buat semua slide sedikit pudar */
-  transform: scale(0.95);
+  gap: 20px;
 }
-
 .project-image-link {
   display: block;
   width: 100%;
@@ -456,70 +388,55 @@ p, .intro, li {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease;
 }
-
-.project-image-link:hover {
-  transform: scale(1.03); /* Sedikit membesar saat disentuh mouse */
-}
-
+.project-image-link:hover { transform: scale(1.03); }
 .project-image-link img {
   width: 100%;
-  height: 100%;
-  aspect-ratio: 16 / 9; /* Menjaga rasio gambar */
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   display: block;
 }
-
-.project-info {
-  text-align: center;
-}
-
+.project-info { text-align: center; }
 .project-title {
   font-size: 1.8em;
   margin-bottom: 10px;
+  font-weight: 600;
+  color: #ff9800;
 }
-
 .project-description {
   font-size: 1em;
   color: rgba(255, 255, 255, 0.85);
   line-height: 1.6;
   margin-bottom: 20px;
-  text-align: justify;
 }
-
-.project-tech {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  flex-wrap: wrap;
-}
-
 .project-tech span {
   background-color: rgba(255, 255, 255, 0.15);
   padding: 5px 12px;
   border-radius: 15px;
   font-size: 0.9em;
+  margin: 0 5px;
 }
 
-.project-slide.active-slide {
+/* Efek Fokus Pudar */
+.education-slide, .project-slide {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0.4;
+  transform: scale(0.9);
+}
+.education-slide.active-slide, .project-slide.active-slide {
   opacity: 1;
-  transform: scale(1); /* Kembalikan ke ukuran normal */
+  transform: scale(1);
 }
 
-/* Footer */
-#contact h2 {
-  margin-bottom: 30px;
-}
-
+/* --- Section: Contact --- */
+#contact h2 { margin-bottom: 30px; }
 #contact-form {
   display: flex;
   flex-direction: column;
   width: 90%;
   max-width: 600px;
-  gap: 15px; /* Jarak antar input field */
+  gap: 15px;
 }
-
-#contact-form input,
-#contact-form textarea {
+#contact-form input, #contact-form textarea {
   width: 100%;
   padding: 15px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -527,14 +444,8 @@ p, .intro, li {
   border-radius: 8px;
   color: white;
   font-size: 16px;
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
-
-#contact-form input::placeholder,
-#contact-form textarea::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
 #contact-form button {
   padding: 15px;
   border: none;
@@ -547,75 +458,178 @@ p, .intro, li {
   transition: background-color 0.3s ease;
 }
 
-#contact-form button:hover {
-  background-color: #e68900;
-}
-
+/* --- Footer --- */
 footer {
   position: fixed;
-  text-shadow: none;
   background: rgba(0, 0, 0, 0.3);
   padding: 20px 0;
   bottom: 0;
   width: 100%;
   color: rgba(255, 255, 255, 0.8);
-  
-  /* DIUBAH: Sembunyikan footer di bawah layar & buat transparan */
   opacity: 0;
   transform: translateY(100%);
   transition: opacity 0.5s ease, transform 0.5s ease;
-  z-index: 1001; /* Pastikan di atas elemen lain saat muncul */
+  z-index: 1001;
 }
-
 footer.footer-visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 .social-links {
   display: flex;
   justify-content: center;
   gap: 25px;
   margin-bottom: 15px;
 }
-
 .social-links a {
   color: rgba(255, 255, 255, 0.8);
   font-size: 24px;
-  transition: color 0.3s ease, transform 0.3s ease;
 }
-
 .social-links a:hover {
-  color: #ff9800; /* Warna berubah saat disentuh mouse */
-  transform: translateY(-3px); /* Ikon sedikit terangkat */
+  color: #ff9800;
+  transform: translateY(-3px);
 }
-
 footer p {
   font-size: 14px;
   text-align: center;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #2c3e50; /* Warna latar belakang track */
-}
-::-webkit-scrollbar-thumb {
-  background: #ff9800; /* Warna thumb (yang digeser) */
-  border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #e68900; /* Warna saat disentuh mouse */
-}
-
+/* Animasi Fade In */
 .fade-in-element {
   opacity: 0;
-  transform: translateY(20px); /* Mulai sedikit dari bawah */
+  transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-
 .fade-in-element.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* --- MEDIA QUERY: TAMPILAN MOBILE (HP) --- */
+@media (max-width: 768px) {
+  
+  /* 1. Hamburger Menu & Navigasi */
+  .hamburger {
+    display: block;
+  }
+  .hamburger.active .bar:nth-child(2) { opacity: 0; }
+  .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  .nav-links {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    gap: 0;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.95);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    padding: 20px 0;
+  }
+  .nav-links.active { left: 0; }
+  .nav-links li { margin: 16px 0; }
+
+  /* 2. Layout Home */
+  .home-container {
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 80px; 
+    text-align: center;
+  }
+  .photo-frame {
+    width: 200px; /* Perkecil Foto */
+    height: 200px;
+    margin: 0 auto;
+  }
+  .home-text {
+    text-align: center;
+    width: 100%;
+    padding: 0 15px;
+  }
+  .home-text h1 { 
+    font-size: 1.8em; /* Perkecil Judul Nama */
+  }
+  .home-text .intro {
+    text-align: center;
+    padding: 0 5px;
+    font-size: 0.9em; /* Perkecil Teks Intro */
+    line-height: 1.5;
+  }
+  .tech-stack {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .stack-icons {
+    justify-content: center;
+  }
+  .stack-icons i {
+    font-size: 2em; /* Perkecil ikon */
+  }
+
+  /* 3. Slider Container di HP (Box Menyesuaikan) */
+  .section {
+    padding: 60px 15px;
+  }
+  
+  /* Kurangi tinggi agar pas di layar HP */
+  .education-slider-container {
+    height: 480px; 
+  }
+  
+  /* Sesuaikan isi Slider Pendidikan */
+  .education-slide {
+    padding: 10px;
+    justify-content: flex-start; /* Mulai dari atas agar muat */
+    padding-top: 40px;
+  }
+  .school-logo {
+    max-width: 80px; /* Perkecil Logo Sekolah */
+    max-height: 80px;
+  }
+  .school-name { 
+    font-size: 1.3em; /* Perkecil Nama Sekolah */
+    margin-bottom: 5px;
+  }
+  .education-slide .year {
+    font-size: 0.9em;
+  }
+  .school-description {
+    font-size: 0.85em; /* Perkecil Deskripsi */
+    line-height: 1.4;
+    max-width: 95%;
+  }
+
+  /* Sesuaikan isi Slider Project */
+  .project-slider-container {
+    height: 520px;
+  }
+  .project-slide {
+    padding: 10px;
+    justify-content: flex-start;
+    padding-top: 30px;
+  }
+  .project-image-link img {
+    /* Pastikan gambar tidak terlalu besar */
+    max-height: 150px; 
+  }
+  .project-title { 
+    font-size: 1.3em; /* Perkecil Judul Project */
+    margin-top: 10px;
+  }
+  .project-description { 
+    font-size: 0.85em; /* Perkecil Deskripsi Project */
+    line-height: 1.4;
+  }
+  
+  /* Panah Slider */
+  .slider-arrow {
+    top: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  .slider-arrow.prev { left: -15px; }
+  .slider-arrow.next { right: -15px; }
 }

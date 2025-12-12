@@ -7,181 +7,215 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 <body>
+  <canvas id="particle-canvas"></canvas>
   <div class="background-gradient"></div>
 
-    <nav>
-        <div class="nav-container">
-            <div class="logo">Husein Baraqbah</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#school">School</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Husein Baraqbah</div>
+      
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
 
-    <main>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#school">School</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
 
     <section id="home" class="section">
-        <div class="home-container">
-            
-            <div class="photo-frame">
-                <img src="./Image/Husein_porto.jpg" alt="Foto Husein Baraqbah">
-            </div>
-
-            <div class="home-text">
-                <h1>Husein Baraqbah</h1>
-                <p class="intro">
-                    Halo semuanya, nama saya Husein Baraqbah, 20 tahun dan berasal dari Jakarta. Saya adalah seorang mahasiswa yang tertarik pada dunia teknologi dan pemrograman. Saat ini saya berkuliah di Universitas Bina Nusantara (BINUS) jurusan Computer Science dengan peminatan AI karena saya sangat tertarik dengan AI. Selain AI, saya juga tertarik dengan pemrograman yang berkaitan dengan game. Saya membuat portofolio ini sebagai pemenuhan program enrichment untuk menampilkan latar belakang sekaligus proyek yang pernah saya kerjakan.
-                </p>
-            </div>
-
+      <div class="home-container">
+        
+        <div class="photo-frame">
+          <img src="./Image/Husein_porto.png" alt="Foto Husein Baraqbah">
         </div>
-        <!-- <a href="#school" class="scroll-prompt">scroll untuk lanjut</a> -->
+
+        <div class="home-text">
+          <h1>Husein Baraqbah</h1>
+          <p class="intro">
+            Halo semuanya, nama saya Husein Baraqbah, 
+            20 tahun dan berasal dari Jakarta. Saya adalah 
+            seorang mahasiswa yang tertarik pada dunia teknologi 
+            dan pemrograman. Saat ini saya berkuliah di Universitas 
+            Bina Nusantara (BINUS) jurusan Computer Science dengan 
+            peminatan AI karena saya sangat tertarik dengan AI. 
+            Selain AI, saya juga tertarik dengan pemrograman 
+            yang berkaitan dengan game. Saya membuat portofolio 
+            ini sebagai pemenuhan program enrichment untuk 
+            menampilkan latar belakang sekaligus proyek yang pernah saya 
+            kerjakan. Berikut adalah language yang saya kuasai selain yang language 
+            yang terdapat dalam list saya juga bersedia mempelajari dan medalami language 
+            lain sebagai improvisasi kedepannya.
+          </p>
+
+          <div class="tech-stack">
+            <h4>Language yang Saya Kuasai:</h4>
+            <div class="stack-icons">
+              <i class="devicon-c-plain" title="C"></i>
+              <i class="devicon-python-plain" title="Python"></i>
+              <i class="devicon-java-plain" title="Java"></i>
+              <i class="devicon-html5-plain" title="HTML5"></i>
+              <i class="devicon-css3-plain" title="CSS3"></i>
+              <i class="devicon-javascript-plain" title="JavaScript"></i>
+              <i class="devicon-xampp-plain" title="XAMPP"></i>
+            </div>
+          </div>
+          
+          <a href="HUSEIN BARAQBAH.pdf" target="_blank" class="btn btn-cv">
+            <i class="fas fa-file-arrow-down"></i> Unduh CV Saya
+          </a>
+          
+        </div>
+
+      </div>
     </section>
 
     <section id="school" class="section">
-        <h2 class="fade-in-element">Riwayat Pendidikan</h2>
-        <div class="education-slider-container fade-in-element">
-            <div class="slider-window">
-                <div class="education-slider">
+      <h2 class="fade-in-element">Riwayat Pendidikan</h2>
+      <div class="education-slider-container fade-in-element">
+        <div class="slider-window">
+          <div class="education-slider">
 
-                    <div class="education-slide" id="smp">
-                        <h3>SMP</h3>
-                        <img src="./Image/Mtsn.png" alt="Logo SMP Negeri 1 Jakarta" class="school-logo">
-                        <p class="school-name">MTS Negeri 1 Jakarta</p>
-                        <span class="year">(2017 - 2020)</span>
-                        <div class="school-description">
-                            <p>Saya menjalani masa SMP di MTsN 1 Jakarta Selatan dimana selama masa pembeljaran saya mendapat mata pelajaran TIK yang membuat saya mulai tertarik dengan hal berbau pemrograman. Hal ini juga yang menjadi awal mula saya mulai mendalami ilmu komputer.</p>
-                        </div>
-                    </div>
-                
-                    <div class="education-slide" id="sma">
-                        <h3>SMA</h3>
-                        <img src="./Image/download.jpeg" alt="Logo SMA Negeri 1 Jakarta" class="school-logo">
-                        <p class="school-name">SMA Fatahillah Jakarta Selatan</p>
-                        <span class="year">(2020 - 2023)</span>
-                        <div class="school-description">
-                            <p>Saya menjalani masa SMA di SMA Fatahillah Jakarta Selatan saya mengambil penjurusan IPA selama masa SMA dimana saya selain mempelajari hal-hal seperti Biologi, Fisika, dan Matematika saya juga mulai mendalami ilmu komputer basic.</p>
-                        </div>
-                    </div>
-
-                    <div class="education-slide active" id="kuliah">
-                        <h3>Perguruan Tinggi</h3>
-                        <img src="./Image/Bina-Nusantara.png" alt="Logo Universitas Bina Nusantara (BINUS)" class="school-logo">
-                        <p class="school-name">Universitas Bina Nusantara (BINUS)</p>
-                        <span class="year">(2023 - Sekarang)</span>
-                        <div class="school-description">
-                            <p>Saat ini saya menempuh pendidikan di jurusan Computer Science Bina Nusantara University dengan peminatan Artificial Intelligence. Saya sangat antusias mempelajari algoritma AI dan aplikasinya, Sejauh ini saya sudah mempelajari 6 language berupa C, Python, Java, HTML, CSS, dan JS. Python menjadi language yang biasa saya gunakan selama masa perkuliuahan karena saya mengambil peminatan AI.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="education-slide" id="smp">
+              <h3>SMP</h3>
+              <img src="./Image/Mtsn.png" alt="Logo MTsN 1 Jakarta" class="school-logo">
+              <p class="school-name">MTS Negeri 1 Jakarta</p>
+              <span class="year">(2017 - 2020)</span>
+              <div class="school-description">
+                <p>Saya menjalani masa SMP di MTsN 1 Jakarta Selatan dimana selama masa pembeljaran saya mendapat mata pelajaran TIK yang membuat saya mulai tertarik dengan hal berbau pemrograman. Hal ini juga yang menjadi awal mula saya mulai mendalami ilmu komputer.</p>
+              </div>
+            </div>
+        
+            <div class="education-slide" id="sma">
+              <h3>SMA</h3>
+              <img src="./Image/download.jpeg" alt="Logo SMA Fatahillah" class="school-logo">
+              <p class="school-name">SMA Fatahillah Jakarta Selatan</p>
+              <span class="year">(2020 - 2023)</span>
+              <div class="school-description">
+                <p>Saya menjalani masa SMA di SMA Fatahillah Jakarta Selatan saya mengambil penjurusan IPA selama masa SMA dimana saya selain mempelajari hal-hal seperti Biologi, Fisika, dan Matematika saya juga mulai mendalami ilmu komputer basic.</p>
+              </div>
             </div>
 
-            <button class="slider-arrow prev" id="prevBtn">&lt;</button>
-            <button class="slider-arrow next" id="nextBtn">&gt;</button>
+            <div class="education-slide" id="kuliah">
+              <h3>Perguruan Tinggi</h3>
+              <img src="./Image/Bina-Nusantara.png" alt="Logo Universitas Bina Nusantara (BINUS)" class="school-logo">
+              <p class="school-name">Universitas Bina Nusantara (BINUS)</p>
+              <span class="year">(2023 - Sekarang)</span>
+              <div class="school-description">
+                <p>Saat ini saya menempuh pendidikan di jurusan Computer Science Bina Nusantara University dengan peminatan Artificial Intelligence.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- <a href="#skills" class="scroll-prompt">scroll untuk lanjut</a> -->
+        <button class="slider-arrow prev" id="prevBtn">&lt;</button>
+        <button class="slider-arrow next" id="nextBtn">&gt;</button>
+      </div>
     </section>
 
     <section id="skills" class="section">
-        <h2 class="fade-in-element">Proyek Saya</h2>
-        
-        <div class="project-slider-container fade-in-element">
-            <div class="project-slider">
+      <h2 class="fade-in-element">Proyek-Proyek Saya</h2>
+      
+      <div class="project-slider-container fade-in-element">
+        <div class="slider-window">
+          <div class="project-slider">
+          
+            <div class="project-slide">
+              <a href="https://drive.google.com/file/d/1cxMo60UaaKzsDaJUABAE6X_aYPJowoqm/view?usp=sharing" target="_blank" class="project-image-link">
+                <img src="./Image/Classhub.jpg" alt="Screenshot Proyek 1">
+              </a>
+              <div class="project-info">
+                <h3 class="project-title">ClassHub</h3>
+                <p class="project-description">Basic HTML, dan CSS yang pertama saya buat selama masa perkuliahan.</p>
+                <div class="project-tech">
+                  <span>HTML</span>
+                  <span>CSS</span>
+                </div>
+              </div>
+            </div>
             
             <div class="project-slide">
-                <a href="#" target="_blank" class="project-image-link">
-                    <img src="project1.png" alt="Screenshot Proyek 1">
-                </a>
-                <div class="project-info">
-                    <h3 class="project-title">Website Portofolio A</h3>
-                    <p class="project-description">Sebuah portofolio pribadi yang dibangun dengan teknologi web modern untuk menampilkan karya dan kemampuan.</p>
-                    <div class="project-tech">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                    </div>
+              <a href="https://github.com/HuseinBaraqbah/Basys" target="_blank" class="project-image-link">
+                <img src="./Image/basys.jpg" alt="Screenshot Proyek 2">
+              </a>
+              <div class="project-info">
+                <h3 class="project-title">Project Basys</h3>
+                <p class="project-description">Project Basic Assignment System Deeplearning Berbasis facenet dan pytorch.</p>
+                <div class="project-tech">
+                  <span>Python</span>
                 </div>
-            </div>
-            
-            <div class="project-slide">
-                <a href="#" target="_blank" class="project-image-link">
-                    <img src="project2.png" alt="Screenshot Proyek 2">
-                </a>
-                <div class="project-info">
-                    <h3 class="project-title">Aplikasi Kalkulator B</h3>
-                    <p class="project-description">Aplikasi kalkulator sederhana dengan antarmuka yang bersih, dibuat menggunakan Python.</p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>Tkinter</span>
-                    </div>
-                </div>
+              </div>
             </div>
 
             <div class="project-slide">
-                <a href="https://machinelearning-binvision.streamlit.app/" target="_blank" class="project-image-link">
-                    <img src="./Image/BV.png" alt="Screenshot Proyek 3">
-                </a>
-                <div class="project-info">
-                    <h3 class="project-title">Project BinVision</h3>
-                    <p class="project-description">BinVision adalah project Machine Learning sekaligus Deep learning yang saya buat dimana project ini menggunakan TensorFlow-based model untuk mengenali tipe samapah yang berbeda dimana saya membaginya menjadi plastic, paper, metal, glass, cardboard, dan general waste. Saya sendiri adalah Head Coder untuk project ini hal ini juga membuat saya percaya diri dengan skill Leadership saya.</p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                    </div>
+              <a href="https://machinelearning-binvision.streamlit.app/" target="_blank" class="project-image-link">
+                <img src="./Image/BV.png" alt="Screenshot Proyek 3">
+              </a>
+              <div class="project-info">
+                <h3 class="project-title">Project BinVision</h3>
+                <p class="project-description">BinVision adalah project Machine Learning sekaligus Deep learning yang saya buat dimana project ini menggunakan TensorFlow-based model untuk mengenali tipe sampah yang berbeda.</p>
+                <div class="project-tech">
+                  <span>Python</span>
                 </div>
+              </div>
             </div>
 
             <div class="project-slide">
-                <a href="#" target="_blank" class="project-image-link">
-                    <img src="project2.png" alt="Screenshot Proyek 2">
-                </a>
-                <div class="project-info">
-                    <h3 class="project-title">Aplikasi Kalkulator B</h3>
-                    <p class="project-description">Aplikasi kalkulator sederhana dengan antarmuka yang bersih, dibuat menggunakan Python.</p>
-                    <div class="project-tech">
-                        <span>Figma</span>
-                    </div>
+              <a href="https://drive.google.com/drive/folders/13w3I0dee8bet0ohirVbo9fIrBwSqBluY?usp=sharing" target="_blank" class="project-image-link">
+                <img src="./Image/Ashpatl.jpg" alt="Screenshot Proyek 4">
+              </a>
+              <div class="project-info">
+                <h3 class="project-title">Ashpatl Rejends</h3>
+                <p class="project-description">Desain figma serta web HTML, CSS, JS dengan inspirasi dari game ashpalt.</p>
+                <div class="project-tech">
+                  <span>Figma & Web</span>
                 </div>
+              </div>
             </div>
-
-            </div>
-
-            <button class="slider-arrow prev" id="projectPrevBtn">&lt;</button>
-            <button class="slider-arrow next" id="projectNextBtn">&gt;</button>
+          </div>
         </div>
 
-        <!-- <a href="#contact" class="scroll-prompt">scroll untuk lanjut</a> -->
+        <button class="slider-arrow prev" id="projectPrevBtn">&lt;</button>
+        <button class="slider-arrow next" id="projectNextBtn">&gt;</button>
+      </div>
     </section>
 
     <section id="contact" class="section">
-        <h2>Hubungi Saya</h2>
-        <form id="contact-form" action="https://formspree.io/f/xdkwedvd" method="POST">
-            <input type="text" name="nama" placeholder="Nama Anda" required>
-            <input type="email" name="email" placeholder="Email Anda" required>
-            <textarea name="pesan" placeholder="Pesan Anda" rows="5" required></textarea>
-            <button type="submit">Kirim Pesan</button>
-        </form>
+      <h2>Hubungi Saya</h2>
+      <form id="contact-form" action="https://formspree.io/f/URL_UNIK_ANDA" method="POST">
+        <input type="text" name="nama" placeholder="Nama Anda" required>
+        <input type="email" name="email" placeholder="Email Anda" required>
+        <textarea name="pesan" placeholder="Pesan Anda" rows="5" required></textarea>
+        <button type="submit">Kirim Pesan</button>
+      </form>
     </section>
-    </main>
+  </main>
 
-    <footer>
-        <div class="social-links">
-            <a href="https://instagram.com/huseinbaraqbah_24" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://linkedin.com/in/husein-baraqbah-918461297" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://discord.com/users/300256213608955904/" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
-            <a href="mailto:husinbaraqbah50@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://wa.me/628979757480" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        </div>
-        <p>&copy; <span id="year"></span> Husein Baraqbah. Semua Hak Dilindungi.</p>
-    </footer>
+  <footer>
+    <div class="social-links">
+      <a href="https://instagram.com/huseinbaraqbah_24" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://linkedin.com/in/husein-baraqbah-918461297" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://line.me/ti/p/Tz0HxQMnVz" target="_blank" aria-label="Line"><i class="fab fa-line"></i></a>
+      <a href="https://wa.me/628979757480" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://github.com/HuseinBaraqbah" target="_blank" aria-label="Github"><i class="fab fa-github"></i></a>
+    </div>
+    <p>&copy; <span id="year"></span> Husein Baraqbah. Semua Hak Dilindungi.</p>
+  </footer>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
